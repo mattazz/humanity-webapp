@@ -99,6 +99,8 @@ class character{
 
     age_up(number_of_years){
         this.age += number_of_years
+        // Check injury
+        // Check status and effects
     }
 
     age_up_w_milestones(number_of_years){
@@ -112,7 +114,8 @@ class character{
             $('#events').before(`<h5> Age: ${this.age}`);
 
             this.generate_milestones(this.age, 1) //Sets number of milestones per year
-
+            // Check injury
+            // Check status and effects
         }
     }
 }
@@ -121,6 +124,6 @@ class character{
 let char1 = new character({})
 $('h1').text(char1.fName + ' ' + char1.lName);
 $('h1').after(`<p>Attributes: ${char1.attr}`);
-char1.age_up_w_milestones(25)
+char1.age_up_w_milestones(generateRandomInt(80))
 $('h1').after(`<p>Age:  ${char1.age} </p>`);
 console.log(char1)
