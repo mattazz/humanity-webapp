@@ -7,6 +7,16 @@ let lastNames = db_LastNames
 let positiveAttr = db_positiveAttr
 let negativeAttr = db_negativeAttr
 let milestoneGenEvents = db_milestone_general_events
+/**
+* Min and Max ages for each age era
+*/
+let age_config = {
+    infant: [0, 4],
+    toddler: [5, 11],
+    child: [12, 17],
+    young_adult: [18, 24],
+    adult: [25, 999]
+}
 
 // Returns list [0] = First name [1] = Last name
 function generate_name(){
@@ -44,14 +54,25 @@ function generateRandomInt(max){
 function between(num, min, max){
     return num >= min && num <= max
 }
-
-// Main character class
+/**
+* Main Character class including methods for generating milestones and aging up
+* @param {string} fName Defaults to generating a random first name
+* @param {string} lName Defaults to generating a random last name
+* @param {number} age Defaults to 0 (Start of birth)
+* @param {Array} attr Defaults to 3 random attributes into an array
+* @param {Array} events No events at the starts, but can get filled with generate_milestones()
+*/
 class character{
+
     constructor({fName = generate_name()[0], 
         lName = generate_name()[1], 
         age = 0, 
-        attr = generate_attributes(5),
-        events = []
+        attr = generate_attributes(3),
+        events = [],
+        // Stats - Total of 100 | Each age era has random 20 roll
+        stat_physical = generateRandomInt(20),
+        stat_mental = generateRandomInt(20),
+        stat_social = generateRandomInt(20)
     }){
         this.fName = fName
         this.lName = lName
@@ -59,19 +80,22 @@ class character{
         this.age = age
         this.attr = attr
         this.events = events
+        this.stat_physical = stat_physical
+        this.stat_mental = stat_mental
+        this.stat_social = stat_social
     }
     // Used to generate events in their lives
     generate_milestones(age, max_milestones){
         let era = ''
-        if(between(this.age,0, 4)){
+        if(between(this.age, age_config['infant'][0], age_config['infant'][1])){
             era = 'infant'
-        } else if(between(this.age, 5, 11)) {
+        } else if(between(this.age, age_config['toddler'][0], age_config['toddler'][1])) {
             era = 'toddler'
-        } else if(between(this.age, 12, 17)){
+        } else if(between(this.age, age_config['child'][0], age_config['child'][1])){
             era = 'child'
-        } else if(between(this.age, 18, 24)){
+        } else if(between(this.age, age_config['young_adult'][0], age_config['young_adult'][1])){
             era = 'young_adult'
-        } else if(between(this.age, 25, 999)){
+        } else if(between(this.age, age_config['adult'][0], age_config['adult'][1])){
             era = 'adult'
         }
 
@@ -95,7 +119,7 @@ class character{
             i++
 
             // Writing to HTML
-            $('#events').before(event);
+            $('#events').before(`<p> ${event} </p>`);
         }   
     }
 
@@ -105,27 +129,69 @@ class character{
         // Check status and effects
     }
 
+    /** 
+    * Ages the character up with a chance for milestone events.
+    * @param {number} number_of_years - Number of years to add to the age
+    */
     age_up_w_milestones(number_of_years){
         let i = 0
         while(i<number_of_years){
             this.age ++
             i ++
-            console.log('Aged up! New age is: ' + this.age)
+            // console.log('Aged up! New age is: ' + this.age)
             
-            // Writing to HTML test
+            // Writing to HTML here because it needs to happen every age
             $('#events').before(`<h5> Age: ${this.age}`);
-
             this.generate_milestones(this.age, 1) //Sets number of milestones per year
-            // Check injury
-            // Check status and effects
+
+
+            // Check age roll
+            switch(this.age){
+                case age_config['toddler'][0]:
+                    this.era_update_stats('a toddler')
+                    break
+                case age_config['child'][0]:
+                    this.era_update_stats('a child')
+                    break
+                case age_config['young_adult'][0]:
+                    this.era_update_stats('a young adult')
+                    break
+                case age_config['adult'][0]:
+                    this.era_update_stats('an adult')
+                    break
+            }
+            // Check injury - todo
+            // Check status and effects - tdo
         }
+    }
+
+    era_update_stats(era){
+        let physical_add = generateRandomInt(20)
+        let mental_add = generateRandomInt(20)
+        let social_add = generateRandomInt(20)
+
+        this.events.push(`You've become a ${era}!`)
+        $('#events').before(` <p><b>You've become ${era}! (+${physical_add} Physical | +${mental_add} Mental | +${social_add} Social)</b</p>`)
+        
+        this.stat_physical += physical_add
+        this.stat_mental += mental_add
+        this.stat_social += social_add
+    }
+
+
+    to_HTML(){
+        // Writing general bio card to HTML
+        $('#char-name').text(char1.fName + ' ' + char1.lName);
+        $('#char-attr').text(`${char1.attr.join(' | ')}`);
+        $('#char-age').text(`Age:  ${char1.age}`);
+        $('#char-physical-stat').text(char1.stat_physical + ' / 100');
+        $('#char-mental-stat').text(char1.stat_mental + ' / 100');
+        $('#char-social-stat').text(char1.stat_social + ' / 100');
     }
 }
 
 // Testing character generation
 let char1 = new character({})
-$('h1').text(char1.fName + ' ' + char1.lName);
-$('h1').after(`<p>Attributes: ${char1.attr}`);
 char1.age_up_w_milestones(generateRandomInt(80))
-$('h1').after(`<p>Age:  ${char1.age} </p>`);
+char1.to_HTML()
 console.log(char1)

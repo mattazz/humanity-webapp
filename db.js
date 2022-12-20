@@ -291,7 +291,7 @@ export let db_milestone_general_events = {
             ],
             mental:
                 [
-                {event: 'Finished my homework!',
+                {event: 'Finished my job work!',
                 severity: 0,
                 condition: ''},
                 {event: '',
