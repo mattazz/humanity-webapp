@@ -48,7 +48,7 @@ export let db_milestone_general_events = {
                 {event: 'Ate something spoiled',
                 severity: 0,
                 condition: ''},
-                {event: 'Rolled around my bend',
+                {event: 'Rolled around my bed',
                 severity: 0,
                 condition: ''},
                 {event: '',

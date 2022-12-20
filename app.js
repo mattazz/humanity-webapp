@@ -85,10 +85,12 @@ class character{
             let selectedEra = milestoneGenEvents[era]
             let selectedPositivity = positivity[generateRandomInt(positivity.length)]
             let selectedType = type[generateRandomInt(type.length)]
+            let numberOfEvents = selectedEra[selectedPositivity][selectedType].length
             console.log(`Generating... || ${era} || ${selectedPositivity} || ${selectedType}`)
-            let event = selectedEra[selectedPositivity][selectedType][0]['event']
+            let event = selectedEra[selectedPositivity][selectedType][generateRandomInt(numberOfEvents)]['event']
             console.log("Specific event: " + event)
             console.log('Generating event for: ' + this.fName + ' : ' + event)
+            console.log('NUM OF EVENTS: ' + numberOfEvents)
             this.events.push(event)
             i++
 
