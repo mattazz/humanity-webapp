@@ -14,8 +14,8 @@ let age_config = {
     infant: [0, 4],
     toddler: [5, 11],
     child: [12, 17],
-    young_adult: [18, 24],
-    adult: [25, 999]
+    young_adult: [18, 31],
+    adult: [32, 999]
 }
 
 // Returns list [0] = First name [1] = Last name

@@ -1,6 +1,7 @@
 export let db_FirstNames = ['Miguel', 'Sadie', 'Simon', 'Ramon', 'Adri', 'Stephen', 'Mark', 'Sarah','Celine']
 export let db_LastNames = ['Santos', 'Stephens', 'Colbert', 'Azada', 'Rudfowl', 'Bessinger', 'Rogan']
 
+// Change this to have stat modifiers
 export let db_positiveAttr = ['Brave', 'Intelligent', 'Charismatic', 'Attractive', 'Social']
 export let db_negativeAttr = ['Clumsy', 'Ugly', 'Fickle', 'Evil', 'Introvert']
 
