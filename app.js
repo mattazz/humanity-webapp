@@ -2,11 +2,13 @@ import { db_FirstNames, db_LastNames,
     db_positiveAttr, db_negativeAttr,
 db_milestone_general_events} from './db.js'
 
+// General bio stats
 let firstNames = db_FirstNames
 let lastNames = db_LastNames
 let positiveAttr = db_positiveAttr
 let negativeAttr = db_negativeAttr
 let milestoneGenEvents = db_milestone_general_events
+
 /**
 * Min and Max ages for each age era
 */
@@ -18,7 +20,10 @@ let age_config = {
     adult: [32, 999]
 }
 
-// Returns list [0] = First name [1] = Last name
+/**
+ * Returns list of a randomly generated full name
+ * @returns {Array} First name and Last name in a list [fname, lname]
+ */
 function generate_name(){
     // console.log('Generating name...')
     let selected_Fname = firstNames[generateRandomInt(firstNames.length)]
@@ -27,6 +32,11 @@ function generate_name(){
     return [selected_Fname, selected_Lname]
 }
 
+/**
+ * Generates attributes
+ * @param {number} max_amount Amount of attributes to generate
+ * @returns {Array} Final list of character attributes
+ */
 function generate_attributes(max_amount){
     let final_list = []
 
@@ -45,12 +55,22 @@ function generate_attributes(max_amount){
     return final_list
 }
 
-// For generating random numbers
+/** Generates a random int from 0 to {max}
+
+ * @param {number} max Maximum range of the integer
+ * @returns The randomized number
+ */
 function generateRandomInt(max){
     let randNum = Math.floor(Math.random() * max)
     return randNum
 }
 
+/** Quick check if a number is between two numbers {min, max}
+ * @param {Number} num Number to check
+ * @param {Number} min Minimum number
+ * @param {Number} max Maximum number
+ * @returns True or False
+ */
 function between(num, min, max){
     return num >= min && num <= max
 }
@@ -84,8 +104,10 @@ class character{
         this.stat_mental = stat_mental
         this.stat_social = stat_social
     }
-    // Used to generate events in their lives
-    generate_milestones(age, max_milestones){
+    /** Used to generate milestones for the 'add_up_w_milestones()' method
+     * @param {Number} max_milestones number of milestones per 
+     */
+    generate_milestones(max_milestones){
         let era = ''
         if(between(this.age, age_config['infant'][0], age_config['infant'][1])){
             era = 'infant'
@@ -142,7 +164,7 @@ class character{
             
             // Writing to HTML here because it needs to happen every age
             $('#events').before(`<h5> Age: ${this.age}`);
-            this.generate_milestones(this.age, 1) //Sets number of milestones per year
+            this.generate_milestones(1) //Sets number of milestones per year
 
 
             // Check age roll
@@ -165,6 +187,9 @@ class character{
         }
     }
 
+    /** Used for checking the age and rolling for stats when reaching the next era
+     * @param {String} era 
+     */
     era_update_stats(era){
         let physical_add = generateRandomInt(20)
         let mental_add = generateRandomInt(20)
@@ -178,7 +203,9 @@ class character{
         this.stat_social += social_add
     }
 
-
+    /**
+     * Pushes the Character info to HTML
+     */
     to_HTML(){
         // Writing general bio card to HTML
         $('#char-name').text(char1.fName + ' ' + char1.lName);
