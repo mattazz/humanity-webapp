@@ -209,24 +209,28 @@ class character{
                 if (this.npc == false){
                     $('#events').before(`<h5> Age: ${this.age}`);
                 }
+
                 this.generate_milestones(num_of_milestones) //Sets number of milestones per year
 
 
                 // Check age roll
-                switch(this.age){
-                    case age_config['toddler'][0]:
-                        this.era_update_stats('a toddler')
-                        break
-                    case age_config['child'][0]:
-                        this.era_update_stats('a child')
-                        break
-                    case age_config['young_adult'][0]:
-                        this.era_update_stats('a young adult')
-                        break
-                    case age_config['adult'][0]:
-                        this.era_update_stats('an adult')
-                        break
+                if(this.npc == false){
+                    switch(this.age){
+                        case age_config['toddler'][0]:
+                            this.era_update_stats('a toddler')
+                            break
+                        case age_config['child'][0]:
+                            this.era_update_stats('a child')
+                            break
+                        case age_config['young_adult'][0]:
+                            this.era_update_stats('a young adult')
+                            break
+                        case age_config['adult'][0]:
+                            this.era_update_stats('an adult')
+                            break
+                    }
                 }
+                
                 // Check injury and death- todo
                 if (this.age > 60){
                     this.chance_of_death()
@@ -236,7 +240,9 @@ class character{
                 // Relations age up as well
                 for(const i of this.relations){
                     console.log('CHECKING CHARACTER: ' + i.fName + ' ' + i.lName)
-                    i.age_up_w_milestones(1, 1)
+                    if (i.is_dead == false){
+                        i.age_up_w_milestones(1, 1)
+                    }
                 }
             }            
             
