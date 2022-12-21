@@ -137,7 +137,7 @@ class character{
             let positivity = ['positive', 'negative']
             let type = ['physical', 'mental', 'social']
 
-            console.log('Generating milestone for Era: ' + era)
+            // console.log('Generating milestone for Era: ' + era)
 
             let i = 0
             while(i < max_milestones){
@@ -145,7 +145,7 @@ class character{
                 let selectedPositivity = positivity[generateRandomInt(positivity.length)]
                 let selectedType = type[generateRandomInt(type.length)]
                 let numberOfEvents = selectedEra[selectedPositivity][selectedType].length
-                console.log(`Generating... || ${era} || ${selectedPositivity} || ${selectedType}`)
+                // console.log(`Generating... || ${era} || ${selectedPositivity} || ${selectedType}`)
                 let event = selectedEra[selectedPositivity][selectedType][generateRandomInt(numberOfEvents)]['event']
                 // console.log("Specific event: " + event)
                 // console.log('Generating event for: ' + this.fName + ' : ' + event)
@@ -164,7 +164,7 @@ class character{
     chance_of_death(){
         if (this.is_dead == false){
             if (generateRandomInt(100) > 50){
-                console.log('Rolling for death...')
+                console.log('Rolling for death for: ' + this.fName + ' ' + this.lName)
                 this.is_dead = true
                 this.fName = this.fName + ' (DEAD)'
                 this.lName = this.lName + ' (DEAD)'
