@@ -91,6 +91,7 @@ class character{
         attr = generate_attributes(3),
         events = [],
         relations =[], //[0] is FATHER and [1] is MOTHER
+        connection = '',
         npc = false,
         // Stats - Total of 100 | Each age era has random 20 roll
         stat_physical = generateRandomInt(20),
@@ -109,6 +110,7 @@ class character{
         this.stat_mental = stat_mental
         this.stat_social = stat_social
         this.npc = npc
+        this.connection = connection
 
 
         if(this.npc == false){
@@ -178,27 +180,37 @@ class character{
         let father = new character({
             lName: this.lName,
             age: 0,
-            npc: true //Stops form infinetly generating parents upon creation 
+            npc: true, //Stops form infinetly generating parents upon creation 
+            connection: 'father'
         })
         let mother = new character({
             lName: this.lName,
             age: 0,
-            npc: true
+            npc: true,
+            connection: 'mother'
         })
         // Ages the NPC parents
-        father.age_up_w_milestones((age_diff + generateRandomInt(20)), 1)
-        mother.age_up_w_milestones((generateRandomInt(20) + age_diff), 1)
+        father.age_up_w_milestones((age_diff + generateRandomInt(20)), 1, false)
+        mother.age_up_w_milestones((generateRandomInt(20) + age_diff), 1, false)
 
         // Adds to Character's relations array
-        this.relations.push(father)
         this.relations.push(mother)
+        this.relations.push(father)
+    }
+
+    interact_with_main_char(){
+        if(generateRandomInt(100) > 50){
+            $('#events').before(`<p> ${this.fName} ${this.lName} (${this.connection}) interacted with you! (social + 2) </p>`) //just a template
+        }
     }
 
     /** 
     * Ages the character up with a chance for milestone events.
     * @param {number} number_of_years - Number of years to add to the age
+    * @param {number} num_of_milestones - How many events will happen?
+    * @param {boolean}with_interaction - Will hae NPCs try and interact with the main character
     */
-    age_up_w_milestones(number_of_years, num_of_milestones){
+    age_up_w_milestones(number_of_years, num_of_milestones, with_interaction){
         let i = 0
         while(i<number_of_years){
 
@@ -235,13 +247,17 @@ class character{
                 if (this.age > 60){
                     this.chance_of_death()
                 }
-                // Check status and effects - tdo
+                // Check status and effects - todo
+                // Check social interactions from NPC
+                if(this.npc == true && with_interaction == true){
+                    this.interact_with_main_char()
+                }
 
                 // Relations age up as well
                 for(const i of this.relations){
                     console.log('CHECKING CHARACTER: ' + i.fName + ' ' + i.lName)
                     if (i.is_dead == false){
-                        i.age_up_w_milestones(1, 1)
+                        i.age_up_w_milestones(1, 1, true)
                     }
                 }
             }            
@@ -279,13 +295,20 @@ class character{
         $('#char-social-stat').text(char1.stat_social + ' / 100');
 
         let relations = char1.relations
-        $('#char-relations').after(`<p> ${JSON.stringify(relations[0])} </p>`);
-        $('#char-relations').after(`<p> ${JSON.stringify(relations[1])} </p>`);
+        $('#char-father').text(`${JSON.stringify(relations[0])} `);
+        $('#char-mother').text(`${JSON.stringify(relations[1])} `);
     }
 }
 
 // Testing character generation
 let char1 = new character({})
-char1.age_up_w_milestones(generateRandomInt(80), generateRandomInt(5))
+// char1.age_up_w_milestones(generateRandomInt(80), generateRandomInt(5))
+
+$('.age-up').click(function (e) { 
+    e.preventDefault();
+    char1.age_up_w_milestones(1,3, true)
+    char1.to_HTML()
+    
+});
 char1.to_HTML()
 console.log(char1)
