@@ -249,7 +249,7 @@ class character{
                 }
                 // Check status and effects - todo
                 // Check social interactions from NPC
-                if(this.npc == true && with_interaction == true){
+                if(this.npc == true && with_interaction == true && this.is_dead == false){
                     this.interact_with_main_char()
                 }
 
@@ -287,28 +287,29 @@ class character{
      */
     to_HTML(){
         // Writing general bio card to HTML
-        $('#char-name').text(char1.fName + ' ' + char1.lName);
-        $('#char-attr').text(`${char1.attr.join(' | ')}`);
-        $('#char-age').text(`Age:  ${char1.age}`);
-        $('#char-physical-stat').text(char1.stat_physical + ' / 100');
-        $('#char-mental-stat').text(char1.stat_mental + ' / 100');
-        $('#char-social-stat').text(char1.stat_social + ' / 100');
+        $('#char-name').text(mainChar.fName + ' ' + mainChar.lName);
+        $('#char-attr').text(`${mainChar.attr.join(' | ')}`);
+        $('#char-age').text(`Age:  ${mainChar.age}`);
+        $('#char-physical-stat').text(mainChar.stat_physical + ' / 100');
+        $('#char-mental-stat').text(mainChar.stat_mental + ' / 100');
+        $('#char-social-stat').text(mainChar.stat_social + ' / 100');
 
-        let relations = char1.relations
+        let relations = mainChar.relations
         $('#char-father').text(`${JSON.stringify(relations[0])} `);
         $('#char-mother').text(`${JSON.stringify(relations[1])} `);
     }
 }
 
 // Testing character generation
-let char1 = new character({})
-// char1.age_up_w_milestones(generateRandomInt(80), generateRandomInt(5))
+let mainChar = new character({})
+// mainChar.age_up_w_milestones(generateRandomInt(80), generateRandomInt(5))
 
 $('.age-up').click(function (e) { 
     e.preventDefault();
-    char1.age_up_w_milestones(1,3, true)
-    char1.to_HTML()
+    mainChar.age_up_w_milestones(1,3, true)
+    mainChar.to_HTML()
     
 });
-char1.to_HTML()
-console.log(char1)
+
+mainChar.to_HTML()
+console.log(mainChar)
