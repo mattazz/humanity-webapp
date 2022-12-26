@@ -147,11 +147,7 @@ class character{
                 let selectedPositivity = positivity[generateRandomInt(positivity.length)]
                 let selectedType = type[generateRandomInt(type.length)]
                 let numberOfEvents = selectedEra[selectedPositivity][selectedType].length
-                // console.log(`Generating... || ${era} || ${selectedPositivity} || ${selectedType}`)
                 let event = selectedEra[selectedPositivity][selectedType][generateRandomInt(numberOfEvents)]['event']
-                // console.log("Specific event: " + event)
-                // console.log('Generating event for: ' + this.fName + ' : ' + event)
-                // console.log('NUM OF EVENTS: ' + numberOfEvents)
                 this.events.push(event)
                 i++
 
@@ -168,9 +164,13 @@ class character{
             if (generateRandomInt(100) > 50){
                 console.log('Rolling for death for: ' + this.fName + ' ' + this.lName)
                 this.is_dead = true
-                this.fName = this.fName + ' (DEAD)'
-                this.lName = this.lName + ' (DEAD)'
+                // this.fName = this.fName + ' (DEAD)'
+                // this.lName = this.lName + ' (DEAD)'
                 this.events.push('Character died!')
+                mainChar.events.push(`${this.fName} ${this.lName}, your ${this.connection}, died!`)
+                // FIX THIS
+                if (this.npc == true)
+                    $('#events').before(`<b> ${this.fName} ${this.lName}, your ${this.connection}, died! </b>`)
             }
         }
     }
@@ -208,12 +208,11 @@ class character{
     * Ages the character up with a chance for milestone events.
     * @param {number} number_of_years - Number of years to add to the age
     * @param {number} num_of_milestones - How many events will happen?
-    * @param {boolean}with_interaction - Will hae NPCs try and interact with the main character
+    * @param {boolean} with_interaction - Will hae NPCs try and interact with the main character
     */
     age_up_w_milestones(number_of_years, num_of_milestones, with_interaction){
         let i = 0
         while(i<number_of_years){
-
             if(this.is_dead == false){
                 this.age ++
                 i ++
@@ -253,16 +252,16 @@ class character{
                     this.interact_with_main_char()
                 }
 
-                // Relations age up as well
+                // NPCs age up as well
                 for(const i of this.relations){
                     console.log('CHECKING CHARACTER: ' + i.fName + ' ' + i.lName)
                     if (i.is_dead == false){
                         i.age_up_w_milestones(1, 1, true)
                     }
                 }
-            }            
-            
-            
+            } else{
+                break
+            }           
         }
     }
 
@@ -306,7 +305,7 @@ let mainChar = new character({})
 
 $('.age-up').click(function (e) { 
     e.preventDefault();
-    mainChar.age_up_w_milestones(1,3, true)
+    mainChar.age_up_w_milestones(10,3, true)
     mainChar.to_HTML()
     
 });

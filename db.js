@@ -16,31 +16,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Ate a good meal',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Da-da played with me',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Listened to good music',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Played with ma-ma',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         },
         negative:{
@@ -48,31 +48,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Ate something spoiled',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Rolled around my bed',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Everyone was too loud!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Ma-ma got mad at me',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         }
     },
@@ -84,28 +84,28 @@ export let db_milestone_general_events = {
                 severity: 0},
                 {event: 'Met a dog today',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Remembered a nice memory',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Had a play date with a friend',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         },
         negative:{
@@ -113,31 +113,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Bit my tongue!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Smelled a fart!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Got a headache',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'A kid pushed me!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         }
     },
@@ -147,31 +147,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Ate a good meal',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Friend told me I was good looking',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Solved a puzzle!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Played with friends at the park',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         },
         negative:{
@@ -179,31 +179,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Injured my knee',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Had a cough.',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Could not solve a puzzle',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'I was left alone at home',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         }
     },
@@ -213,31 +213,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Got good grades this sem',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Had a good date',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Listened to good music',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Spent time with my family',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         },
         negative:{
@@ -245,31 +245,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Broke my wrist',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Got bullied at school',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Could not finish my homework',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event:  'None of my friends were available to hang out',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         }
     },
@@ -279,34 +279,34 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Played video games!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Won a basketball tournament',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Got a new job!',
                 severity: 0,
-                condition: 'has_no_job'},
+                effect: 'has_no_job'},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Finished my job work!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Joined a hobby club',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         },
         negative:{
@@ -314,31 +314,31 @@ export let db_milestone_general_events = {
                 [
                 {event: 'Felt some back pain',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: 'Got the flu',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             mental:
                 [
                 {event: 'Got fired from work!',
                 severity: 0,
-                condition: 'has_job'},
+                effect: 'has_job'},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
             social:
                 [
                 {event: 'Loved one died!',
                 severity: 0,
-                condition: ''},
+                effect: ''},
                 {event: '',
                 severity: 0,
-                condition: ''}
+                effect: ''}
             ],
         }
     },
