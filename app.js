@@ -200,7 +200,7 @@ class character{
 
     interact_with_main_char(){
         if(generateRandomInt(100) > 50){
-            $('#events').before(`<p> ${this.fName} ${this.lName} (${this.connection}) interacted with you! (social + 2) </p>`) //just a template
+            $('#events').before(`<p> ${this.fName} ${this.lName} (${this.connection}) interacted with you! (social + 2 **DOESN'T WORK YET) </p>`) //just a template
         }
     }
 
