@@ -3,9 +3,9 @@
     width: 30%;
     margin: auto;
     padding-top: 10px;
-    box-shadow: 4px 4px 1px grey;
+    box-shadow: 4px 4px 1px rgba(128, 128, 128, 0.573);
     margin-bottom: .5rem;
 }
 .bio-card{
-    box-shadow: 8px 8px 1px grey;
+    box-shadow: 8px 8px 1px rgba(128, 128, 128, 0.526);
 }
